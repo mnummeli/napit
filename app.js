@@ -1,14 +1,16 @@
 'use strict';
 
-$(function() {
-    for(let i=1;i<=100;i++) {
-	let nappi = $(`<button>Nappi ${i}</button>`);
-	$('#napit').append(nappi);
-	nappi.click(e => {
-	    $('#vastaus').html(i);
-	});
-	if(i%10 === 0) {
-	    $('#napit').append(`<div style="clear: both;"></div>`);
-	}
+for(let i=1;i<=100;i++) {
+    let nappi = document.createElement('button');
+    let teksti = document.createTextNode(`Nappi ${i}`);
+    nappi.append(teksti);
+    document.getElementById('napit').append(nappi);
+    nappi.onclick = e => {
+	document.getElementById('vastaus').innerHTML = i;
+    };
+    if(i%10 === 0) {
+	let clearfix = document.createElement('div');
+	clearfix.style.clear = 'both';
+	document.getElementById('napit').append(clearfix);
     }
-});
+}
